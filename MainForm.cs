@@ -47,6 +47,13 @@ namespace Usart1
             serialPort1.DataReceived += new SerialDataReceivedEventHandler(port_DataReceived);//委托一个接收处理事件
             serialPort1.Encoding = Encoding.GetEncoding("gb2312");//串口接收编码GB2312码
             System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;//忽略程序跨越线程运行导致的错误.没有此句将会产生错误
+
+            dataBitSelect.Enabled = false;
+            stopBitSelect.Enabled = false;
+            chickBitSelect.Enabled = false;
+            flowControlSelect.Enabled = false;
+            checkGb2312ToUtf8.Enabled = false;
+            checkUtf8ToGb2312.Enabled = false;
         }
 
         private void port_DataReceived(object sender, SerialDataReceivedEventArgs e)//串口数据接收事件
@@ -231,12 +238,20 @@ namespace Usart1
                     }
                     comSelect.Enabled = true;
                     bpsSelect.Enabled = true;
+                    dataBitSelect.Enabled = false;
+                    stopBitSelect.Enabled = false;
+                    chickBitSelect.Enabled = false;
+                    flowControlSelect.Enabled = false;
+                    checkGb2312ToUtf8.Enabled = false;
+                    checkUtf8ToGb2312.Enabled = false;
+                    /*
                     dataBitSelect.Enabled = true;
                     stopBitSelect.Enabled = true;
                     chickBitSelect.Enabled = true;
                     flowControlSelect.Enabled = true;
                     checkGb2312ToUtf8.Enabled = true;
                     checkUtf8ToGb2312.Enabled = true;
+                    */
                     usartButton.Text = "打开串口";
                     if (checkTiming.Checked)
                     {
